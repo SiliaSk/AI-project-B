@@ -20,7 +20,8 @@ print(f"Χ:\n{X}")
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=100)
 print(f"X_train:\n{X_train}")
-print(f"X_test:\n{X_test}") ```
+print(f"X_test:\n{X_test}")
+```
 
 Next, I trained the model and applied it to the test set to evaluate its performance. To assess this, I calculated the Mean Squared Error (MSE) and R-squared values for both the training and test sets, in order to determine how well the model was performing. As expected, the model was performing well.
 
