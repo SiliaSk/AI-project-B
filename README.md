@@ -56,7 +56,7 @@ lr_results = pd.DataFrame(['Linear Regression', lr_train_mse, lr_train_r2, lr_te
 lr_results.columns = [ 'Method', 'Training MSE', 'Training R2', 'Test MSE', 'Test R2' ]
 print(lr_results)
 ```
-However, I decided to apply another ML Model, Random Forest, to compare which one would be more suitable for my data. After conducting a comparison, I realized that the linear regression model was the better choice.
+However, I decided to apply another ML Model, Random Forest, to compare which one would be more suitable for my data. After comparing, I realized that the linear regression model was the better choice.
 ```python
 from sklearn.ensemble import RandomForestRegressor
 rf = RandomForestRegressor(max_depth = 2, random_state = 100)
@@ -77,7 +77,7 @@ print(rf_results)
 df_models = pd.concat([rf_results, lr_results], axis=0)
 print(df_models)
 ```
-Finally, I visualized the relationship between the experimental LogS values (y_train) and the predicted values from the linear regression model (y_lr_train_pred) to gain a deeper understanding of the model's performance.
+Finally, I visualized the relationship between the experimental LogS values (y_train) and the predicted values from the linear regression model (y_lr_train_pred) to better understand the model's performance.
 ```python
 import matplotlib.pyplot as plt
 plt.figure(figsize = (5,5))
