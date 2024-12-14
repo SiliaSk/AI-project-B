@@ -15,14 +15,11 @@ print(f"y:\n{y}")
 X = df.drop("logS", axis = 1)
 print(f"Χ:\n{X}")
 
-
-
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=100)
 print(f"X_train:\n{X_train}")
 print(f"X_test:\n{X_test}")
 ```
-
 Next, I trained the model and applied it to the test set to evaluate its performance. To assess this, I calculated the Mean Squared Error (MSE) and R-squared values for both the training and test sets, in order to determine how well the model was performing. As expected, the model was performing well.
 
 ```python
@@ -58,3 +55,29 @@ print('LR R2 (Test): ', lr_test_r2)
 lr_results = pd.DataFrame(['Linear Regression', lr_train_mse, lr_train_r2, lr_test_mse, lr_test_r2]).transpose()
 lr_results.columns = [ 'Method', 'Training MSE', 'Training R2', 'Test MSE', 'Test R2' ]
 print(lr_results)
+```
+However, I decided to try Random Forest to compare which model would be more suitable for my data. After conducting a comparison, I realized that the linear regression model was the better choice.
+```python
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(max_depth = 2, random_state = 100)
+rf.fit(X_train, y_train)
+y_rf_train_pred = rf.predict(X_train)
+y_rf_test_pred = rf.predict(X_test)
+from sklearn.metrics import mean_squared_error, r2_score
+rf_train_mse = mean_squared_error(y_train, y_rf_train_pred)
+rf_train_r2 = r2_score(y_train, y_rf_train_pred)
+
+rf_test_mse = mean_squared_error(y_test, y_rf_test_pred)
+rf_test_r2 = r2_score(y_test, y_rf_test_pred)
+
+rf_results = pd.DataFrame(['Random Forest', rf_train_mse, rf_train_r2, rf_test_mse, rf_test_r2]).transpose()
+rf_results.columns = [ 'Method', 'Training MSE', 'Training R2', 'Test MSE', 'Test R2' ]
+print(rf_results)
+
+df_models = pd.concat([rf_results, lr_results], axis=0)
+print(df_models)
+```
+
+
+
+
