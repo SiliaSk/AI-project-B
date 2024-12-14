@@ -1,1 +1,1 @@
-# AI-project-B
+# AI-project in Linear Regression 
