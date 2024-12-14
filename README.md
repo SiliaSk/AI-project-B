@@ -1,1 +1,2 @@
 # AI-project in Linear Regression 
+My first experience with machine learning involved developing a linear regression model using Python in PyCharm. The dataset I used was sourced online. The primary reason I chose to start with linear regression was to familiarize myself with fundamental concepts of machine learning, gain a deeper understanding of the model development process, and practically apply the knowledge I had acquired from the courses I was attending. 
